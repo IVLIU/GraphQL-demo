@@ -8,7 +8,7 @@ require('./schema/course')
 const database = () => {
   mongoose.set('debug', true)
 
-  mongoose.connect(config.dbPath)
+  mongoose.connect(config.dbPath, { useMongoClient: true })
 
   mongoose.connection.on('disconnected', () => {
     mongoose.connect(config.dbPath)
